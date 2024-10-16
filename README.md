@@ -7,3 +7,4 @@ Melhorias implementadas por mim:
 - Mudei as cores e fonte do jogo
 - Adicionei box com parabéns pela vitória e botão jogar de novo
 - Adicionei animação de confetes caindo pela vitória
+- Refatorei o código
