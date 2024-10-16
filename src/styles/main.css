@@ -26,7 +26,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: var(--primary-color);
+  background: var(--container-gradient);
   user-select: none;
 }
 
@@ -37,7 +37,7 @@ body {
   justify-content: center;
   align-items: center;
   gap: 3rem;
-  background: var(--container-gradient);
+  background: var(--primary-color);
   padding: 40px 60px;
   max-height: 100vh;
 }
