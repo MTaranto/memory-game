@@ -1,0 +1,158 @@
+@import './reset.css';
+
+:root {
+  --primary-color: #c0f5f2;
+  --text-color: #fff;
+  --shadow-color: #413a3a;
+  --card-size: 100px;
+  --game-size: 433px;
+  --container-gradient: linear-gradient(
+    325deg,
+    #020024 0%,
+    #090979 30%,
+    #00d4ff 70%,
+    #eff6fd 100%
+  );
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--primary-color);
+  user-select: none;
+}
+
+.container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 3rem;
+  background: var(--container-gradient);
+  padding: 40px 60px;
+  max-height: 100vh;
+}
+
+h2 {
+  font-size: 2em;
+  color: var(--text-color);
+  letter-spacing: 0.05em;
+  text-shadow: 2px 2px 2px var(--shadow-color);
+}
+
+.reset {
+  padding: 15px 20px;
+  width: 100%;
+  color: #000;
+  background-color: var(--text-color);
+  border: none;
+  font-size: 0.75em;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+  box-shadow: 2px 2px 2px var(--shadow-color);
+}
+
+.reset:hover {
+  background-color: #ddd;
+}
+
+.reset:focus {
+  background-color: #000;
+  color: #f0ff19;
+}
+
+.game {
+  display: flex;
+  flex-wrap: wrap;
+  height: var(--game-size);
+  width: var(--game-size);
+  gap: 10px;
+  transform-style: preserve-3d;
+  perspective: 500px;
+}
+
+.item {
+  position: relative;
+  height: var(--card-size);
+  width: var(--card-size);
+  transition: transform 0.5s;
+  box-shadow: 2px 2px 4px var(--shadow-color);
+  transform-style: preserve-3d;
+  border-radius: 5px;
+}
+
+.item .front,
+.item .back {
+  border-radius: 5px;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 3em;
+  backface-visibility: hidden;
+}
+
+.item .front {
+  background-color: var(--text-color);
+  transform: rotateY(180deg);
+}
+
+.item .back {
+  background-color: var(--text-color);
+  background-image: url(../images/card-back.jpg);
+  background-size: contain;
+}
+
+.item.boxOpen {
+  transform: rotateY(180deg);
+}
+
+.item.boxMatch .front {
+  box-shadow: 0 0 0 3px #00ff0080;
+}
+
+@keyframes confettiFall {
+  0% { transform: translateY(-100vh) rotate(0deg); }
+  100% { transform: translateY(100vh) rotate(720deg); }
+}
+
+.confetti {
+  position: fixed;
+  top: -10px;
+  width: 10px;
+  height: 20px;
+  animation: confettiFall linear forwards;
+}
+
+.winBox {
+  position: absolute;
+  height: 12rem;
+  width: 25rem;
+  top: calc(50% - 7.5rem);
+  left: calc(50% - 12.5rem);
+  background-color: #000;
+  border: 10px solid var(--primary-color);
+  color: var(--text-color);
+  text-align: center;
+  padding: 2em;
+  display: none;
+}
+
+.winBox p {
+  font-size: 1.2rem;
+  margin-bottom: 1.5em;
+}
